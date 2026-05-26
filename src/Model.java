@@ -91,7 +91,7 @@ public class Model {
      * Incrementa el kilometraje acumulado de un coche específico en la cantidad indicada.
      * * @param matricula La matrícula del coche que va a avanzar.
      * @param m La cantidad de distancia (metros/kilómetros) que avanza el coche.
-     * @return El objeto {@link Coche} con su kilometraje actualizado,
+     * @return El objeto {@link Coche} con su kilometraje actualizado y sus litros actualizados restadole 2 a los litros totales,
      * o {@code null} si el coche no se encuentra.
      */
     public Coche hacerAvanzarCoche(String matricula, Integer m) {
