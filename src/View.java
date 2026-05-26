@@ -112,7 +112,7 @@ public class View {
                         System.out.println("El parking está vacío.");
                     } else {
                         for (Coche ch : lista) {
-                            System.out.println("Modelo: " + ch.modelo + " | Matrícula: " + ch.matricula + " | Velocidad: " + ch.velocidad + " km/h" + " | Recorrido: " + ch.km + " km");
+                            System.out.println("Modelo: " + ch.modelo + " | Matrícula: " + ch.matricula + " | Velocidad: " + ch.velocidad + " km/h" + " | Recorrido: " + ch.km + " m");
                         }
                         System.out.println("----------------------------");
                     }
