@@ -77,12 +77,13 @@ public class Controller {
     }
 
     /**
-     * Intercepta la petición de la Vista para hacer avanzar (incrementar km) un coche.
+     * Intercepta la petición de la Vista para hacer avanzar un coche una distancia determinada.
      * * @param matricula La matrícula del coche que debe avanzar.
-     * @return El objeto {@link Coche} actualizado, o {@code null} si no se encuentra.
+     * @param metros    La cantidad de metros que se van a sumar al kilometraje del coche.
+     * @return El objeto {@link Coche} actualizado, o {@code null} si el coche no existe.
      */
-    public Coche atenderAvanzarCoche(String matricula) {
-        Coche cocheActualizado = database.hacerAvanzarCoche(matricula);
+    public Coche atenderAvanzarCoche(String matricula, Integer metros) {
+        Coche cocheActualizado = database.hacerAvanzarCoche(matricula,metros);
         return cocheActualizado;
     }
 

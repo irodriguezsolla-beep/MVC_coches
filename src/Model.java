@@ -69,15 +69,16 @@ public class Model {
     }
 
     /**
-     * Incrementa en una unidad el kilometraje acumulado de un coche específico.
+     * Incrementa el kilometraje acumulado de un coche específico en la cantidad indicada.
      * * @param matricula La matrícula del coche que va a avanzar.
+     * @param m         La cantidad de distancia (metros/kilómetros) que avanza el coche.
      * @return El objeto {@link Coche} con su kilometraje actualizado,
-     * o {@code null} si el coche no existe.
+     * o {@code null} si el coche no se encuentra.
      */
-    public Coche hacerAvanzarCoche(String matricula) {
+    public Coche hacerAvanzarCoche(String matricula, Integer m) {
         Coche aux = getCoche(matricula);
         if (aux != null) {
-            aux.km++;
+            aux.km += m;
         }
         return aux;
     }

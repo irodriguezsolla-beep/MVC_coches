@@ -17,7 +17,7 @@ public class Coche {
     public Integer velocidad;
 
     /** El kilometraje total recorrido por el coche. */
-    public int km;
+    public Integer km;
 
     /**
      * Constructor para instanciar un nuevo Coche con sus datos iniciales.

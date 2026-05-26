@@ -69,9 +69,12 @@ public class View {
                     System.out.println("\n--- Avanzar Coche ---");
                     System.out.print("Introduce la matrícula: ");
                     String matricula3 = teclado.nextLine();
-                    Coche avanza = c.atenderAvanzarCoche(matricula3);
+                    System.out.print("Introduce los metros: ");
+                    Integer mt = Integer.parseInt(teclado.nextLine());
+                    Coche avanza = c.atenderAvanzarCoche(matricula3, mt);
                     if (avanza != null) {
-                        System.out.println("¡Avanzado! Kilómetros actuales de: " + avanza.km);
+                        // Recuerda que si 'km' es privado en tu clase Coche, aquí deberías usar avanza.getKm()
+                        System.out.println("¡Avanzado! Kilómetros actuales: " + avanza.km);
                     } else {
                         System.out.println("El coche con matrícula " + matricula3 + " no está en el parking.");
                     }
