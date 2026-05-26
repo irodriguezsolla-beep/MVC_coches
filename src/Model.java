@@ -64,14 +64,33 @@ public class Model {
      * @throws NullPointerException si no se encuentra ningún coche con la matrícula proporcionada.
      */
     public int cambiarVelocidad(String matricula, Integer v) {
-        getCoche(matricula).velocidad = v;
-        return getCoche(matricula).velocidad;
+        Coche aux =getCoche(matricula);
+        if (aux != null) {
+            aux.velocidad = v;
+            return aux.velocidad;
+        }
+        return -1;
+    }
+    /**
+     * Modifica la cantidad actual  litros gasolina de un coche registrado.
+     * * @param matricula La matrícula del coche a modificar.
+     * @param l La nueva cantidad de gasolina que se le asignará al vehículo.
+     * @return La nueva cantidad de gasolina asignada tras realizar el cambio.
+     * @throws NullPointerException si no se encuentra ningún coche con la matrícula proporcionada.
+     */
+    public int anadirGasolina(String matricula, Integer l){
+        Coche aux = getCoche(matricula);
+        if (aux != null) {
+            aux.L = l;
+            return aux.L;
+        }
+        return -1;
     }
 
     /**
      * Incrementa el kilometraje acumulado de un coche específico en la cantidad indicada.
      * * @param matricula La matrícula del coche que va a avanzar.
-     * @param m         La cantidad de distancia (metros/kilómetros) que avanza el coche.
+     * @param m La cantidad de distancia (metros/kilómetros) que avanza el coche.
      * @return El objeto {@link Coche} con su kilometraje actualizado,
      * o {@code null} si el coche no se encuentra.
      */
@@ -79,6 +98,7 @@ public class Model {
         Coche aux = getCoche(matricula);
         if (aux != null) {
             aux.km += m;
+            aux.L -= 2;
         }
         return aux;
     }

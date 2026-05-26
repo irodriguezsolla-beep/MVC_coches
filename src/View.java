@@ -26,10 +26,11 @@ public class View {
             System.out.println("1. Agregar Coche");
             System.out.println("2. Quitar Coche");
             System.out.println("3. Avanzar Coche");
-            System.out.println("4. Añadir velocidad");
-            System.out.println("5. Mostrar velocidad del coche");
-            System.out.println("6. Coches en el parking");
-            System.out.println("7. Salir");
+            System.out.println("4. Cargar Gasolina");
+            System.out.println("5. Añadir velocidad");
+            System.out.println("6. Mostrar velocidad del coche");
+            System.out.println("7. Coches en el parking");
+            System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
             try {
@@ -73,52 +74,65 @@ public class View {
                     Integer mt = Integer.parseInt(teclado.nextLine());
                     Coche avanza = c.atenderAvanzarCoche(matricula3, mt);
                     if (avanza != null) {
-                        // Recuerda que si 'km' es privado en tu clase Coche, aquí deberías usar avanza.getKm()
-                        System.out.println("¡Avanzado! Kilómetros actuales: " + avanza.km);
+                        System.out.println("¡Avanzado! Kilómetros actuales: " + avanza.km + ", Gasolina restante: " + avanza.L);
                     } else {
                         System.out.println("El coche con matrícula " + matricula3 + " no está en el parking.");
                     }
                     break;
-
                 case 4:
-                    System.out.println("\n--- Cambiar Velocidad ---");
+                    System.out.println("\n---Cargar Gasolina ---");
                     System.out.print("Introduce la matrícula: ");
                     String matricula4 = teclado.nextLine();
-                    System.out.print("Introduce la nueva velocidad: ");
+                    System.out.print("Introduce la gasolina: ");
+                    Integer l = teclado.nextInt();
+                    teclado.nextLine();
 
-                    Integer v = teclado.nextInt();
-                    teclado.nextLine(); // Limpia el buffer del escáner
-
-                    int velocidadNueva = c.atenderCambiarVelocidad(matricula4, v);
-                    if (velocidadNueva != -1) {
-                        System.out.println(" Velocidad actualizada con éxito a: " + velocidadNueva + " km/h.");
+                    int nuevaGasolina = c.atenderCambiarGasolina(matricula4,l);
+                    if (nuevaGasolina != -1) {
+                        System.out.println(" Cantidad de gasolina : " + l + " añadida a " + matricula4);
                     } else {
                         System.out.println(" Error: No se encontró ningún coche con la matrícula " + matricula4);
                     }
                     break;
 
                 case 5:
-                    System.out.println("\n--- Mostrar velocidad del coche ---");
-                    System.out.print("Introduce la matrícula del coche: ");
+                    System.out.println("\n--- Cambiar Velocidad ---");
+                    System.out.print("Introduce la matrícula: ");
                     String matricula5 = teclado.nextLine();
-                    int velocidad = c.atenderMostrarVelocidad(matricula5);
-                    System.out.println("Velocidad actual del coche: " + velocidad + " km/h.");
+                    System.out.print("Introduce la nueva velocidad: ");
+                    Integer v = teclado.nextInt();
+                    teclado.nextLine();
+
+                    int velocidadNueva = c.atenderCambiarVelocidad(matricula5, v);
+                    if (velocidadNueva != -1) {
+                        System.out.println(" Velocidad actualizada con éxito a: " + velocidadNueva + " km/h.");
+                    } else {
+                        System.out.println(" Error: No se encontró ningún coche con la matrícula " + matricula5);
+                    }
                     break;
 
                 case 6:
+                    System.out.println("\n--- Mostrar velocidad del coche ---");
+                    System.out.print("Introduce la matrícula del coche: ");
+                    String matricula6 = teclado.nextLine();
+                    int velocidad = c.atenderMostrarVelocidad(matricula6);
+                    System.out.println("Velocidad actual del coche: " + velocidad + " km/h.");
+                    break;
+
+                case 7:
                     System.out.println("\n--- Coches en el parking ---");
                     List<Coche> lista = c.atenderMostrarLista();
                     if (lista.isEmpty()) {
                         System.out.println("El parking está vacío.");
                     } else {
                         for (Coche ch : lista) {
-                            System.out.println("Modelo: " + ch.modelo + " | Matrícula: " + ch.matricula + " | Velocidad: " + ch.velocidad + " km/h" + " | Recorrido: " + ch.km + " m");
+                            System.out.println("Modelo: " + ch.modelo + " | Matrícula: " + ch.matricula + " | Velocidad: " + ch.velocidad + " km/h" + " | Recorrido: " + ch.km + " m" + " | Gasolina: " + ch.L);
                         }
                         System.out.println("----------------------------");
                     }
                     break;
 
-                case 7:
+                case 8:
                     System.out.println("\nSaliendo del programa... ¡Hasta pronto!");
                     break;
 
@@ -127,7 +141,7 @@ public class View {
                     break;
             }
 
-        } while (opcion != 7);
+        } while (opcion != 8);
 
         teclado.close();
     }

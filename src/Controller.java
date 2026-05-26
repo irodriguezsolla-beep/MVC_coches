@@ -100,6 +100,18 @@ public class Controller {
     }
 
     /**
+     * Solicita al modelo que modifique la gasolina de un coche específico.
+     * * @param matricula La matrícula del coche a modificar.
+     * @param nuevaGasolina La nueva gasolina que se le quiere asignar.
+     * @return La gasolina final resultante tras la modificación.
+     * @throws NullPointerException si la matrícula no corresponde a ningún coche registrado.
+     */
+    public int atenderCambiarGasolina(String matricula, Integer nuevaGasolina){
+        int gasolinaRestante = database.anadirGasolina(matricula,nuevaGasolina);
+        return gasolinaRestante;
+    }
+
+    /**
      * Solicita al modelo la velocidad actual de un vehículo concreto.
      * * @param matricula La matrícula del coche a consultar.
      * @return La velocidad actual del vehículo en km/h.

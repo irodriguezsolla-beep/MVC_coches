@@ -19,6 +19,8 @@ public class Coche {
     /** El kilometraje total recorrido por el coche. */
     public Integer km;
 
+    /** Los litros totales del coche. */
+    public Integer L;
     /**
      * Constructor para instanciar un nuevo Coche con sus datos iniciales.
      * Al crearse, el coche inicia estacionado (velocidad 0) y sin recorrido (0 km).
@@ -30,5 +32,6 @@ public class Coche {
         this.matricula = matricula;
         this.velocidad = 0;
         this.km = 0;
+        this.L= 0;
     }
 }
